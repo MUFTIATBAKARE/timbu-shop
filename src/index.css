@@ -11,3 +11,53 @@ body {
   padding: 0;
   height: 100%;
 }
+.progress_bar {
+  align-self: center;
+  width: 75%;
+  height: 5px;
+  border-radius: 50px;
+  border: 1px solid #e6f2f5;
+  background: #e6f2f5;
+  position: relative;
+}
+.filler {
+  width: 0;
+  height: 10px;
+  border-radius: 50px;
+  border: 1px solid #e6f2f5;
+  background: #000;
+  position: absolute;
+}
+.progress_circle1,
+.progress_circle2,
+.progress_circle3 {
+  border-radius: 50%;
+  position: absolute;
+  top: -15px;
+  padding: 15px;
+}
+.progress_circle1 {
+  left: 0%;
+  border: 1px solid #000;
+  background: #000;
+}
+.progress_circle2 {
+  left: 48%;
+  border: 1px solid #e6f2f5;
+  background: #e6f2f5;
+
+  &.active {
+    background: #000;
+    border: 1px solid #000;
+  }
+}
+.progress_circle3 {
+  right: 0;
+  border: 1px solid #e6f2f5;
+  background: #e6f2f5;
+
+  &.active {
+    background: #007e99;
+    border: 1px solid #007e99;
+  }
+}

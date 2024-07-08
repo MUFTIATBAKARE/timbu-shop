@@ -39,16 +39,16 @@ const items = [
 ];
 function PopularImages() {
   return (
-    <>
-      <h4>Popular Brands</h4>
-      <div className="flex justify-between">
+    <div className=" mx-10">
+      <h4 className="font-semibold mb-6">Popular Brands</h4>
+      <div className="flex justify-between ">
         {items.map((item) => {
           if (item) {
             return <img key={item.id} src={item.picture} />;
           }
         })}
       </div>
-    </>
+    </div>
   );
 }
 

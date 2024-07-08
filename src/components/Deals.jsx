@@ -5,6 +5,7 @@ import C from "../assets/FrameC.svg";
 import D from "../assets/FrameD.svg";
 import E from "../assets/FrameE.svg";
 import Like from "../assets/Heart.svg";
+import { Link } from "react-router-dom";
 
 const items = [
   {
@@ -35,15 +36,15 @@ const items = [
 ];
 function Deals() {
   return (
-    <>
-      <h4>Best Deals Today</h4>
-      <ul className="flex justify-between">
+    <div className=" mx-10">
+      <h4 className="font-semibold my-6">Best Deals Today</h4>
+      <ul className="flex gap-6">
         {items.map((item) => (
           <Product item key={item.name} itemObj={item} />
         ))}
         <img src={Like} />
       </ul>
-    </>
+      </div>
   );
 }
 function Product(props) {
@@ -51,9 +52,11 @@ function Product(props) {
   return (
     <>
       <li>
-        <img src={props.itemObj.picture} />
-        <p>{props.itemObj.name}</p>
-        <p>{props.itemObj.price}</p>
+        <Link to="/product">
+          <img src={props.itemObj.picture} />
+          <p>{props.itemObj.name}</p>
+          <p>{props.itemObj.price}</p>
+        </Link>
         <button>Add to Cart</button>
       </li>
     </>

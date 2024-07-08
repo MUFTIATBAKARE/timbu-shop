@@ -5,45 +5,46 @@ import C from "../assets/FrameH.svg";
 import D from "../assets/FrameI.svg";
 import E from "../assets/FrameJ.svg";
 import Like from "../assets/Heart.svg";
+import { Link } from "react-router-dom";
 
 const items = [
   {
     picture: A,
-    name: "FeatherStep Classic",
-    price: "$259.99",
+    name: "Air Jordan 1 Retro High OG",
+    price: "$349.99",
   },
   {
     picture: B,
-    name: "Retro Air Jordan 1 OG “Panda”",
-    price: "$325.89",
+    name: "Air Jordan 6 Retro DM",
+    price: "$329.99",
   },
   {
     picture: C,
-    name: "New Balance 550 Olive",
-    price: "$220.00",
+    name: "Adidas Retro Gradas",
+    price: "$315.75",
   },
   {
     picture: D,
-    name: "Adidas ZX Torsion For Men",
-    price: "$387.79",
+    name: "New Balance M990v6",
+    price: "$250.99",
   },
   {
     picture: E,
-    name: "Retro Adidas Lowdunk",
-    price: "$375.99",
+    name: "New Balance Masculino",
+    price: "$289.99",
   },
 ];
 function TopProducts() {
   return (
-    <>
-      <h4>Best Deals Today</h4>
-      <ul className="flex justify-between">
+    <div className=" mx-10">
+      <h4 className="font-semibold my-6">Top Products</h4>
+      <ul className="flex gap-6">
         {items.map((item) => (
           <Product item key={item.name} itemObj={item} />
         ))}
         <img src={Like} />
       </ul>
-    </>
+    </div>
   );
 }
 function Product(props) {
@@ -51,9 +52,11 @@ function Product(props) {
   return (
     <>
       <li>
+      <Link to="/product">
         <img src={props.itemObj.picture} />
         <p>{props.itemObj.name}</p>
         <p>{props.itemObj.price}</p>
+        </Link>
         <button>Add to Cart</button>
       </li>
     </>

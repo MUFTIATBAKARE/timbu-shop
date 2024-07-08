@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link} from "react-router-dom";
 import Cart from "../assets/Cart.svg";
 import User from "../assets/User.svg";
 import Logo from "./Logo";
@@ -7,17 +7,26 @@ import Search from "./searchBox";
 
 function desktopHeader() {
   return (
-    <header className="flex justify-between">
+    <>
+    <span className="flex items-center justify-center gap-4 bg-green-800 text-white">
+      <p>Join our community for special discounts on selected items</p>
+      <p>Subscribe to Newsletter</p>
+    </span>
+    <header className="flex justify-between my-6 mx-10">
       <Link to="/">
         <Logo />
       </Link>
       <Nav />
       <Search />
-      <NavLink to="/Cart">
+      <span className="flex items-center gap-4">
+      <Link to="/cart">
         <img src={Cart} alt="Cart" />
-      </NavLink>
+      </Link>
       <img src={User} alt="User" />
+      </span>
     </header>
+    </>
+
   );
 }
 
