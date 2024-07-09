@@ -34,12 +34,11 @@ function Steps() {
         break;
     }
   };
-  const stepNames = ["Cart", "Check", "Payment"];
   return (
     <>
       <Desktop />
       <div>
-      <ProgressBar currentPage={page} activeStep={currentStep} stepNames={stepNames} />
+      <ProgressBar currentPage={page} activeStep={currentStep} />
         {ShowNextPage()}
         
       </div>

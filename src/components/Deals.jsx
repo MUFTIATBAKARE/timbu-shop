@@ -34,7 +34,9 @@ const items = [
     price: "$375.99",
   },
 ];
+
 function Deals() {
+  
   return (
     <div className=" mx-10">
       <h4 className="font-semibold my-6">Best Deals Today</h4>
@@ -44,7 +46,7 @@ function Deals() {
         ))}
         <img src={Like} />
       </ul>
-      </div>
+    </div>
   );
 }
 function Product(props) {
@@ -57,7 +59,9 @@ function Product(props) {
           <p>{props.itemObj.name}</p>
           <p>{props.itemObj.price}</p>
         </Link>
-        <button>Add to Cart</button>
+        
+          <button >Add to Cart</button>
+       
       </li>
     </>
   );

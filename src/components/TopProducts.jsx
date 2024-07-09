@@ -57,7 +57,9 @@ function Product(props) {
         <p>{props.itemObj.name}</p>
         <p>{props.itemObj.price}</p>
         </Link>
-        <button>Add to Cart</button>
+        <Link to="/cart">
+          <button>Add to Cart</button>
+        </Link>
       </li>
     </>
   );

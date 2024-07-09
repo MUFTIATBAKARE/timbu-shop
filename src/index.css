@@ -13,7 +13,8 @@ body {
 }
 .progress_bar {
   align-self: center;
-  width: 75%;
+  margin-top: 16px;
+  width: 72%;
   height: 5px;
   border-radius: 50px;
   border: 1px solid #e6f2f5;
