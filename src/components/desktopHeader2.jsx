@@ -4,12 +4,18 @@ import User from "../assets/User.svg";
 import Logo from "./Logo";
 import Nav from "./navBar";
 import Search from "./searchBox";
-import TopNav from "./TopNav";
 
-function desktopHeader() {
+function desktopHeader2() {
   return (
     <>
-    <TopNav/>
+    <div className="flex items-center justify-end gap-4 px-16 bg-green-800">
+      <select className="bg-transparent text-white  px-2 py-1 rounded focus:outline-none">
+        <option value="English">Language</option>
+      </select>
+      <select className="bg-transparent text-white  px-2 py-1 rounded focus:outline-none">
+        <option className="bg-gray-800" value="Nigeria">Country</option>
+      </select>
+    </div>
     <header className="flex justify-between my-6 mx-10">
       <Link to="/">
         <Logo />
@@ -28,4 +34,4 @@ function desktopHeader() {
   );
 }
 
-export default desktopHeader;
+export default desktopHeader2;

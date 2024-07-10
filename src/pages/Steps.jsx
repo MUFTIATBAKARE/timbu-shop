@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Desktop from "../components/desktopHeader";
-import CartPage from "./CartPage";
+import Desktop from "../components/desktopHeader1";
+import CartPage from "./cartPage"
 import CheckPage from "./CheckPage";
 import Payment from "./Payment";
 import ProgressBar from "../components/ProgressBar";

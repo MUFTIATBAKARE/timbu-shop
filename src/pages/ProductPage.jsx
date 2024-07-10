@@ -1,5 +1,5 @@
 
-import Desktop from "../components/desktopHeader";
+import Desktop from "../components/desktopHeader2";
 import Back from "../assets/Arrow.svg";
 import CartDetails from "../components/CartDetails";
 import ProductImages from "../components/ProductImages";

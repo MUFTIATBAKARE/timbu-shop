@@ -4,12 +4,12 @@ import User from "../assets/User.svg";
 import Logo from "./Logo";
 import Nav from "./navBar";
 import Search from "./searchBox";
-import TopNav from "./TopNav";
 
-function desktopHeader() {
+function desktopHeader1() {
   return (
     <>
-    <TopNav/>
+    <div className="h-4 bg-green-800">
+    </div>
     <header className="flex justify-between my-6 mx-10">
       <Link to="/">
         <Logo />
@@ -28,4 +28,4 @@ function desktopHeader() {
   );
 }
 
-export default desktopHeader;
+export default desktopHeader1;

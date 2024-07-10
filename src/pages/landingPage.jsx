@@ -15,23 +15,23 @@ const LandingPage = () => {
       <PopularImages />
       <Deals />
       <TopProducts />
-      <Discount/>
-      <div className="flex justify-between align-center mx-48 my-10">
-      <span>
-        <p> 15k+<br/>
-        Outlets Worldwide</p>
-      </span>
-      <span>
-        <p> 2M+ <br/>
-        Satisfied Customers</p>
-      </span>
-      <span>
-        <p> 9M+<br/>
-        Footwears Sold </p>
-      </span>
+      <Discount />
+      <div className="flex justify-between align-center mx-48 my-10 text-3xl">
+        <span>
+          <p> 15k+<br />
+            Outlets Worldwide</p>
+        </span>
+        <span>
+          <p> 2M+ <br />
+            Satisfied Customers</p>
+        </span>
+        <span>
+          <p> 9M+<br />
+            Footwears Sold </p>
+        </span>
       </div>
-      <HomeText/>
-      <Footer/>
+      <HomeText />
+      <Footer />
     </div>
   );
 };
