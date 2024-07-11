@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import Button from "./Button";
 
 function CartDetails() {
+  
   return (
+    <>
     <div>
       <p>
         Air Jordan 6 Retro <br />
@@ -25,6 +27,8 @@ function CartDetails() {
         <Button body="Buy Now" />
       </Link>
     </div>
+
+    </>
   );
 }
 

@@ -1,44 +1,15 @@
 import PropTypes from "prop-types";
-import M from "../assets/M.svg";
-import N from "../assets/N.svg";
-import O from "../assets/O.svg";
-import P from "../assets/P.svg";
+import {Items} from "../Items";
+import { useContext } from "react";
+import {ShopContext} from "../context/ShopContext"
 import Delete from "../assets/Delete.svg";
 import OrderCount from "./OrderCount";
 import { useState } from "react";
 
-const items = [
-  {
-    picture: M,
-    name: "New Balance Masculino",
-    size: 9,
-    color: "Custom",
-    price: "$289.99",
-  },
-  {
-    picture: N,
-    name: "Air Jordan Sansun 6 DM",
-    size: 9,
-    color: "Black",
-    price: "$329.99",
-  },
-  {
-    picture: O,
-    name: "Air Jordan 123 GreyToe",
-    size: 9,
-    color: "Grey/White",
-    price: "$349.99",
-  },
-  {
-    picture: P,
-    name: "New Balance 550 Olive",
-    size: 9,
-    color: "Olive/White",
-    price: "$220.00",
-  },
-];
+
 function MyCart() {
-  
+  const { cartItems} = useContext(ShopContext)
+
   return (
     <div className="flex flex-col ">
       <span className="flex gap-80 mb-8">
@@ -49,32 +20,37 @@ function MyCart() {
         </span>
       </span>
       <ul className="flex flex-col">
-        {items.map((item) => (
-          <Product item key={item.name} itemObj={item} />
-        ))}
+        {Items.map((item) => {
+          if(cartItems[item.id] !== 0){
+            return <Product itemObj={item}/>
+          }
+        }
+        )}
       </ul>
     </div>
   );
 }
 function Product(props) {
   const [checked, setChecked] = useState(false);
-  console.log(props);
+  const { cartItems} = useContext(ShopContext)
+  const {id, picture, name, price} = props.itemObj
   function handleChange(e) {
     setChecked(e.target.checked);
  }
+
   return (
     <>
       <li className="flex  gap-12">
       <input value="test" type="checkbox" onChange={handleChange} />
       {checked}
-        <img src={props.itemObj.picture} />
+        <img src={picture} />
         <span className="flex flex-col">
-          <p>{props.itemObj.name}</p>
-          <p>{props.itemObj.size}</p>
-          <p>{props.itemObj.color}</p>
+          <p>{name}</p>
+          {/* <p>{size}</p>
+          <p>{color}</p> */}
         </span>
-        <OrderCount />
-        <p>{props.itemObj.price}</p>
+        <OrderCount id={id}/>
+        <p>{price}</p>
         <img src={Delete} />
       </li>
     </>

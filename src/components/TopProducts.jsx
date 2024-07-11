@@ -1,65 +1,12 @@
 import PropTypes from "prop-types";
-import A from "../assets/FrameF.svg";
-import B from "../assets/FrameG.svg";
-import C from "../assets/FrameH.svg";
-import D from "../assets/FrameI.svg";
-import E from "../assets/FrameJ.svg";
 import Like from "../assets/Heart.svg";
 import Slide from "../assets/ArrowSlide.svg";
+import {Items} from "../Items"
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import {ShopContext} from "../context/ShopContext"
 
-const items = [
-  {
-    picture: A,
-    name: "Air Jordan 1 Retro High OG",
-    price: "$349.99",
-  },
-  {
-    picture: B,
-    name: "Air Jordan 6 Retro DM",
-    price: "$329.99",
-  },
-  {
-    picture: C,
-    name: "Adidas Retro Gradas",
-    price: "$315.75",
-  },
-  {
-    picture: D,
-    name: "New Balance M990v6",
-    price: "$250.99",
-  },
-  {
-    picture: E,
-    name: "New Balance Masculino",
-    price: "$289.99",
-  },
-  {
-    picture: A,
-    name: "Air Jordan 1 Retro High OG",
-    price: "$349.99",
-  },
-  {
-    picture: B,
-    name: "Air Jordan 6 Retro DM",
-    price: "$329.99",
-  },
-  {
-    picture: C,
-    name: "Adidas Retro Gradas",
-    price: "$315.75",
-  },
-  {
-    picture: D,
-    name: "New Balance M990v6",
-    price: "$250.99",
-  },
-  {
-    picture: E,
-    name: "New Balance Masculino",
-    price: "$289.99",
-  },
-];
+
 function TopProducts() {
   const rightSlide = () => {
     var rightSlider = document.getElementById('nextSlider');
@@ -70,8 +17,8 @@ function TopProducts() {
       <h4 className="font-semibold my-6">Top Products</h4>
       <div className="flex relative items-center">
         <ul id="nextSlider" className="flex mr-24 overflow-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-12">
-          {items.map((item) => (
-            <Product item key={item.name} itemObj={item} />
+          {Items.map((item) => (
+            <Product item key={item.id} itemObj={item} />
           ))}
           <img src={Like} />
         </ul>
@@ -81,17 +28,16 @@ function TopProducts() {
   );
 }
 function Product(props) {
-  console.log(props);
+  const {id, picture, name, price} = props.itemObj
+  const {addToCart} = useContext(ShopContext)
   return (
     <>
       <li className="inline-block p-2 cursor-pointer">
         <Link to="/product">
-          <img src={props.itemObj.picture} />
-          <p>{props.itemObj.name}</p>
-          <p>{props.itemObj.price}</p>
-        </Link>
-        <Link to="/cart">
-          <button>Add to Cart</button>
+          <img src={picture} />
+          <p>{name}</p>
+          <p>{price}</p>
+          <button onClick={() => addToCart(id)}>Add to Cart</button>
         </Link>
       </li>
     </>

@@ -83,7 +83,6 @@ function Deals() {
   );
 }
 function Product(props) {
-  console.log(props);
   return (
     <>
       <li className="inline-block p-2 cursor-pointer">

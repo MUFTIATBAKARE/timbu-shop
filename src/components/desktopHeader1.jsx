@@ -8,7 +8,7 @@ import Search from "./searchBox";
 function desktopHeader1() {
   return (
     <>
-    <div className="h-4 bg-green-800">
+    <div className="h-4 bg-custom-green">
     </div>
     <header className="flex justify-between my-6 mx-10">
       <Link to="/">

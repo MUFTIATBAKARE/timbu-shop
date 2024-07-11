@@ -8,7 +8,7 @@ import Search from "./searchBox";
 function desktopHeader2() {
   return (
     <>
-    <div className="flex items-center justify-end gap-4 px-16 bg-green-800">
+    <div className="flex items-center justify-end gap-4 px-16 bg-custom-green">
       <select className="bg-transparent text-white  px-2 py-1 rounded focus:outline-none">
         <option value="English">Language</option>
       </select>
