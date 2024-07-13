@@ -1,10 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import MyOrder2 from "../components/MyOrder2";
+import MyOrder from "../components/MyOrder";
 
 const countries = [
   { value: 'usa', label: 'USA' },
@@ -76,12 +76,14 @@ function CheckPage() {
   const selectedCountry = watch('country', countries[0].value); // Default to the first country
   const regionOptions = regions[selectedCountry]
   return (
-    <>
-      <h3>Checkout</h3>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div >
+    <div className="flex flex-col justify-center item-center mx-16 my-8 gap-16">
+      <div>
+      <h3 >Checkout</h3>
+      </div>
+      <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center gap-16 w-full h-screen" >
+        <div className="w-9/12">
           <div>
-            <h2>Shipping Information</h2>
+            <h2 className="mb-12 ">Shipping Information</h2>
             <div>
               <label >Full Name</label>
               <div>
@@ -90,6 +92,7 @@ function CheckPage() {
                   type="text"
                   placeholder="Enter full name"
                   {...register("fullName")}
+                  className="w-full p-2 border border-gray-300 rounded"
                 />
               </div>
               <div className="errorMsg">{errors.fullName?.message}</div>
@@ -103,6 +106,7 @@ function CheckPage() {
                     type="email"
                     placeholder="Enter email address"
                     {...register("email")}
+                    className="w-full p-2 border border-gray-300 rounded"
                   />
                 </div>
                 <div className="errorMsg">{errors.email?.message}</div>
@@ -115,7 +119,7 @@ function CheckPage() {
                     type="phone"
                     placeholder="Enter number"
                     {...register("phoneNumber")}
-
+                    className="w-full p-2 border border-gray-300 rounded"
                   />
                 </div>
                 <div className="errorMsg">{errors.phoneNumber?.message}</div>
@@ -129,6 +133,7 @@ function CheckPage() {
                   type="text"
                   placeholder="Enter address"
                   {...register("resAddress")}
+                  className="w-full p-2 border border-gray-300 rounded"
                 />
               </div>
               <div className="errorMsg">{errors.resAddress?.message}</div>
@@ -152,7 +157,7 @@ function CheckPage() {
                     type="text"
                     placeholder="City"
                     {...register("city")}
-
+                    className="w-full p-2 border border-gray-300 rounded"
                   />
                 </div>
                 <div className="errorMsg">{errors.dob?.message}</div>
@@ -176,6 +181,7 @@ function CheckPage() {
                   type="text"
                   placeholder="Enter full name"
                   {...register("postalCode")}
+                  className="w-full p-2 border border-gray-300 rounded"
                 />
               </div>
               <div className="errorMsg">{errors.currentEmployer?.message}</div>
@@ -208,10 +214,25 @@ function CheckPage() {
           </div>
         </div>
         <div>
-          <MyOrder2 />
+          <div>
+            <MyOrder />
+          </div>
+          <span>
+            <p>Shipping</p>
+            <p>$150</p>
+          </span>
+          <span>
+            <h4>Grand Total</h4>
+            <p>$577.98</p>
+          </span>
+          <Link to="/payment">
+
+            <button className="bg-custom-midGreen text-white text-lg py-3 w-fullwidth px-8 border rounded"> Proceed to Payment </button>
+
+          </Link>
         </div>
       </form>
-    </>
+    </div>
   );
 }
 

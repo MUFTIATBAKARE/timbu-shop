@@ -10,30 +10,39 @@ import Asks from "../assets/asks.svg";
 
 const items = [
   {
+    id: 21,
     picture: Adidas,
   },
   {
+    id: 22,
     picture: Nike,
   },
   {
+    id: 23,
     picture: Puma,
   },
   {
+    id: 24,
     picture: Fila,
   },
   {
+    id: 25,
     picture: Balance,
   },
   {
+    id: 26,
     picture: Reebok,
   },
   {
+    id: 27,
     picture: Converse,
   },
   {
+    id: 28,
     picture: Vans,
   },
   {
+    id: 29,
     picture: Asks,
   },
 ];

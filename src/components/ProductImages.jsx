@@ -7,18 +7,23 @@ import E from "../assets/E.svg";
 
 const items = [
   {
+    id: 30,
     picture: A,
   },
   {
+    id: 31,
     picture: B,
   },
   {
+    id: 32,
     picture: C,
   },
   {
+    id: 33,
     picture: D,
   },
   {
+    id: 34,
     picture: E,
   },
 ];

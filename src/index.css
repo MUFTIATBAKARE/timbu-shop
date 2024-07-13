@@ -11,6 +11,9 @@ body {
   padding: 0;
   height: 100%;
 }
+.styleBorder{
+    border-top: 5px solid slate;
+}
 .progress_bar {
   align-self: center;
   margin-top: 16px;

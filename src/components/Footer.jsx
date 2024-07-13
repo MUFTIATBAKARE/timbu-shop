@@ -5,7 +5,7 @@ function Footer() {
   return (
     <div className="flex justify-between bg-gray-300">
       <img src={FooterA} alt="Footer Image" />
-      <div className="flex my-auto">
+      <div className="flex my-auto gap-8">
         <span >
           <h5>About Us</h5>
           <p>About Achilles</p>

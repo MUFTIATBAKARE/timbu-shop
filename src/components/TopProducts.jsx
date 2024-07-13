@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import Like from "../assets/Heart.svg";
 import Slide from "../assets/ArrowSlide.svg";
-import {Items} from "../Items"
+import { Items } from "../Items"
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import {ShopContext} from "../context/ShopContext"
+import { ShopContext } from "../context/ShopContext"
 
 
 function TopProducts() {
@@ -28,15 +28,15 @@ function TopProducts() {
   );
 }
 function Product(props) {
-  const {id, picture, name, price} = props.itemObj
-  const {addToCart} = useContext(ShopContext)
+  const { id, picture, name, price } = props.itemObj
+  const { addToCart, cartItems } = useContext(ShopContext)
   return (
     <>
       <li className="inline-block p-2 cursor-pointer">
+        <img src={picture} />
+        <p>{name}</p>
+        <p>${price}</p>
         <Link to="/product">
-          <img src={picture} />
-          <p>{name}</p>
-          <p>{price}</p>
           <button onClick={() => addToCart(id)}>Add to Cart</button>
         </Link>
       </li>
@@ -49,7 +49,7 @@ Product.propTypes = {
     picture: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
       .isRequired,
     name: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
   }).isRequired,
 };
 export default TopProducts;
