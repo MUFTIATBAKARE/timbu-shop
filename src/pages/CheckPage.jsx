@@ -6,23 +6,23 @@ import * as Yup from "yup";
 import MyOrder from "../components/MyOrder";
 
 const countries = [
-  { value: 'usa', label: 'USA' },
-  { value: 'canada', label: 'Canada' },
-  { value: 'uk', label: 'UK' },
+  { value: "usa", label: "USA" },
+  { value: "canada", label: "Canada" },
+  { value: "uk", label: "UK" },
 ];
 
 const regions = {
   usa: [
-    { value: 'ny', label: 'New York' },
-    { value: 'ca', label: 'California' },
+    { value: "ny", label: "New York" },
+    { value: "ca", label: "California" },
   ],
   canada: [
-    { value: 'bc', label: 'British Columbia' },
-    { value: 'on', label: 'Ontario' },
+    { value: "bc", label: "British Columbia" },
+    { value: "on", label: "Ontario" },
   ],
   uk: [
-    { value: 'lon', label: 'London' },
-    { value: 'man', label: 'Manchester' },
+    { value: "lon", label: "London" },
+    { value: "man", label: "Manchester" },
   ],
 };
 function CheckPage() {
@@ -46,20 +46,16 @@ function CheckPage() {
       ),
     country: Yup.string()
       .required("This field is required")
-      .oneOf([
-        'usa',
-        'canada',
-        'uk',
-      ]),
+      .oneOf(["usa", "canada", "uk"]),
     postalCode: Yup.string().required("This field is required"),
-    region: Yup.string()
-      .required("This field is required")
+    region: Yup.string().required("This field is required"),
   });
   const formOptions = { resolver: yupResolver(validationSchema) };
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting }, watch,
+    formState: { errors, isSubmitting },
+    watch,
   } = useForm(formOptions);
   const updateUser = (data) => {
     setUser((prevUser) => ({ ...prevUser, ...data }));
@@ -72,19 +68,22 @@ function CheckPage() {
   function handleChange(e) {
     setChecked(e.target.checked);
   }
-  const selectedCountry = watch('country', countries[0].value); // Default to the first country
-  const regionOptions = regions[selectedCountry]
+  const selectedCountry = watch("country", countries[0].value); // Default to the first country
+  const regionOptions = regions[selectedCountry];
   return (
-    <div className="flex flex-col justify-center item-center mx-16 my-8 gap-16">
+    <div className="flex flex-col justify-center item-center mx-16 my-8 gap-16 ">
       <div>
-      <h3 >Checkout</h3>
+        <h3>Checkout</h3>
       </div>
-      <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center gap-16 w-full h-screen" >
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex justify-center gap-16 w-full h-screen"
+      >
         <div className="w-9/12">
           <div>
             <h2 className="mb-12 ">Shipping Information</h2>
             <div className="flex flex-col gap-4">
-              <label >Full Name</label>
+              <label>Full Name</label>
               <div>
                 <input
                   name="fullName"
@@ -98,7 +97,7 @@ function CheckPage() {
             </div>
             <div>
               <div className="flex flex-col gap-4">
-                <label >Email Address</label>
+                <label>Email Address</label>
                 <div>
                   <input
                     name="email"
@@ -111,7 +110,7 @@ function CheckPage() {
                 <div className="errorMsg">{errors.email?.message}</div>
               </div>
               <div className="flex flex-col gap-4">
-                <label >Phone Number</label>
+                <label>Phone Number</label>
                 <div>
                   <input
                     name="phone"
@@ -125,7 +124,7 @@ function CheckPage() {
               </div>
             </div>
             <div className="flex flex-col gap-4">
-              <label >House address</label>
+              <label>House address</label>
               <div>
                 <input
                   name="resAddress"
@@ -137,10 +136,12 @@ function CheckPage() {
               </div>
               <div className="errorMsg">{errors.resAddress?.message}</div>
             </div>
-            <div>
-              <select {...register('country')}>
-                {countries.map(country => (
-                  <option key={country.value} value={country.value}>{country.label}</option>
+            <div className="flex flex-col gap-4">
+              <select {...register("country")} className="my-4">
+                {countries.map((country) => (
+                  <option key={country.value} value={country.value}>
+                    {country.label}
+                  </option>
                 ))}
               </select>
               {errors.country && (
@@ -149,7 +150,7 @@ function CheckPage() {
             </div>
             <div className="flex flex-col gap-4">
               <div>
-                <label >City</label>
+                <label>City</label>
                 <div>
                   <input
                     name="email"
@@ -161,11 +162,14 @@ function CheckPage() {
                 </div>
                 <div className="errorMsg">{errors.dob?.message}</div>
               </div>
-              <div>
-                <select {...register('region')}>
-                  {regionOptions && regionOptions.map(region => (
-                    <option key={region.value} value={region.value}>{region.label}</option>
-                  ))}
+              <div className="flex flex-col gap-4">
+                <select {...register("region")} className="my-4">
+                  {regionOptions &&
+                    regionOptions.map((region) => (
+                      <option key={region.value} value={region.value}>
+                        {region.label}
+                      </option>
+                    ))}
                 </select>
                 {errors.region && (
                   <p className="errorMsg">{errors.region.message}</p>
@@ -173,7 +177,7 @@ function CheckPage() {
               </div>
             </div>
             <div className="flex flex-col gap-4">
-              <label >Postal Code</label>
+              <label>Postal Code</label>
               <div>
                 <input
                   name="postalCode"
@@ -186,24 +190,24 @@ function CheckPage() {
               <div className="errorMsg">{errors.currentEmployer?.message}</div>
             </div>
           </div>
-          <div>
+          <div className="flex flex-col gap-8 pb-8">
             <p>Shipping Fees</p>
-            <div>
-              <div className="flex ">
+            <div className="flex justify-between">
+              <div className="flex gap-8 ">
                 <input value="test" type="checkbox" onChange={handleChange} />
                 {checked}
-                <div>
+                <div className="flex flex-col gap-4">
                   <p>Express Shipping</p>
                   <p>3-5 working days</p>
                 </div>
               </div>
               <p>$150</p>
             </div>
-            <div>
-              <div>
+            <div className="flex justify-between">
+              <div className="flex gap-8 ">
                 <input value="test" type="checkbox" onChange={handleChange} />
                 {checked}
-                <div>
+                <div className="flex flex-col gap-4">
                   <p>Regular Shipping</p>
                   <p>14-21 working days</p>
                 </div>
@@ -212,22 +216,23 @@ function CheckPage() {
             </div>
           </div>
         </div>
-        <div>
+        <div className="flex flex-col gap-8">
           <div>
             <MyOrder />
           </div>
-          <span>
+          <span className="flex justify-between">
             <p>Shipping</p>
             <p>$150</p>
           </span>
-          <span>
+          <span className="flex justify-between">
             <h4>Grand Total</h4>
             <p>$577.98</p>
           </span>
           <Link to="/payment">
-
-            <button className="bg-custom-midGreen text-white text-lg py-3 w-fullwidth px-8 border rounded"> Proceed to Payment </button>
-
+            <button className="bg-custom-midGreen text-white text-lg py-3 w-fullwidth px-8 border rounded">
+              {" "}
+              Proceed to Payment{" "}
+            </button>
           </Link>
         </div>
       </form>
