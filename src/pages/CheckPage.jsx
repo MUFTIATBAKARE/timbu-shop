@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -38,7 +37,7 @@ function CheckPage() {
       .email()
       .required("Enter a valid email address")
       .matches(
-        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       ),
     phoneNumber: Yup.string()
       .required("Phone number is required")
@@ -84,7 +83,7 @@ function CheckPage() {
         <div className="w-9/12">
           <div>
             <h2 className="mb-12 ">Shipping Information</h2>
-            <div>
+            <div className="flex flex-col gap-4">
               <label >Full Name</label>
               <div>
                 <input
@@ -98,7 +97,7 @@ function CheckPage() {
               <div className="errorMsg">{errors.fullName?.message}</div>
             </div>
             <div>
-              <div>
+              <div className="flex flex-col gap-4">
                 <label >Email Address</label>
                 <div>
                   <input
@@ -111,7 +110,7 @@ function CheckPage() {
                 </div>
                 <div className="errorMsg">{errors.email?.message}</div>
               </div>
-              <div>
+              <div className="flex flex-col gap-4">
                 <label >Phone Number</label>
                 <div>
                   <input
@@ -125,7 +124,7 @@ function CheckPage() {
                 <div className="errorMsg">{errors.phoneNumber?.message}</div>
               </div>
             </div>
-            <div>
+            <div className="flex flex-col gap-4">
               <label >House address</label>
               <div>
                 <input
@@ -148,7 +147,7 @@ function CheckPage() {
                 <p className="errorMsg">{errors.country.message}</p>
               )}
             </div>
-            <div>
+            <div className="flex flex-col gap-4">
               <div>
                 <label >City</label>
                 <div>
@@ -173,7 +172,7 @@ function CheckPage() {
                 )}
               </div>
             </div>
-            <div>
+            <div className="flex flex-col gap-4">
               <label >Postal Code</label>
               <div>
                 <input
@@ -190,7 +189,7 @@ function CheckPage() {
           <div>
             <p>Shipping Fees</p>
             <div>
-              <div>
+              <div className="flex ">
                 <input value="test" type="checkbox" onChange={handleChange} />
                 {checked}
                 <div>
