@@ -1,6 +1,7 @@
 import { Link} from "react-router-dom";
 import Cart from "../assets/Cart.svg";
 import User from "../assets/User.svg";
+import Hamburger from "../assets/Menu.svg";
 import Logo from "./Logo";
 import Nav from "./navBar";
 import Search from "./searchBox";
@@ -8,7 +9,7 @@ import Search from "./searchBox";
 function desktopHeader2() {
   return (
     <>
-    <div className="flex items-center justify-end gap-4 px-16 bg-custom-green">
+    <div className="hidden lg:flex items-center justify-end gap-4 px-16 bg-custom-green">
       <select className="bg-transparent text-white  px-2 py-1 rounded focus:outline-none">
         <option value="English">Language</option>
       </select>
@@ -24,9 +25,10 @@ function desktopHeader2() {
       <Search />
       <span className="flex items-center gap-4">
       <Link to="/cart">
-        <img src={Cart} alt="Cart" />
+        <img src={Cart} alt="Cart" className="hidden lg:block"/>
       </Link>
       <img src={User} alt="User" />
+      <img src={Hamburger} alt="Menu" className="lg:hidden" />
       </span>
     </header>
     </>

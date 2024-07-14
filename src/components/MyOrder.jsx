@@ -15,7 +15,7 @@ function MyOrder() {
   );
   const Amount = getSubtotalAmount()
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col border border-gray p-8 gap-8">
       <h4>Your Order</h4>
       <span>
         <ul className="flex flex-col gap-8">
@@ -52,7 +52,7 @@ function Product({ itemObj }) {
   return (
     <>
       <li className="flex gap-12">
-        <img src={picture} />
+        <img src={picture} className="hidden lg:block cart-image"/>
         <span>
           <p>{name}</p>
           {/* <p>{size}</p>

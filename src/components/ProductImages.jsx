@@ -30,7 +30,7 @@ const items = [
 function ProductImages() {
   return (
     <>
-      <div className="flex justify-between">
+      <div className="flex justify-between overflow-hidden ">
         {items.map((item) => {
           if (item) {
             return <img key={item.id} src={item.picture} />;

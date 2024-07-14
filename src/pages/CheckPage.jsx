@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import MyOrder from "../components/MyOrder";
+import Back from "../assets/Arrow.svg";
+
 
 const countries = [
   { value: "usa", label: "USA" },
@@ -71,17 +73,18 @@ function CheckPage() {
   const selectedCountry = watch("country", countries[0].value); // Default to the first country
   const regionOptions = regions[selectedCountry];
   return (
-    <div className="flex flex-col justify-center item-center mx-16 my-8 gap-16 ">
-      <div>
+    <div className="flex flex-col justify-center item-center mx-16 my-8 gap-2 lg:gap-16 ">
+      <div className="flex flex-row gap-16">
+      <img src={Back} alt="back" />
         <h3>Checkout</h3>
       </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex justify-center gap-16 w-full h-screen"
+        className="flex flex-col md:flex-col lg:flex-row  xl:flex-row justify-center gap-4 md:gap-8 lg:gap-16  xl:gap-16 w-full"
       >
-        <div className="w-9/12">
+        <div className="w-full lg:w-9/12 xl:w-9/12">
           <div>
-            <h2 className="mb-12 ">Shipping Information</h2>
+            <h2 >Shipping Information</h2>
             <div className="flex flex-col gap-4">
               <label>Full Name</label>
               <div>
@@ -229,7 +232,7 @@ function CheckPage() {
             <p>$577.98</p>
           </span>
           <Link to="/payment">
-            <button className="bg-custom-midGreen text-white text-lg py-3 w-fullwidth px-8 border rounded">
+            <button className="bg-custom-midGreen text-white text-base py-3 w-full px-4 border rounded">
               {" "}
               Proceed to Payment{" "}
             </button>

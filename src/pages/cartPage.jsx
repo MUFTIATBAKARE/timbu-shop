@@ -7,9 +7,9 @@ function CartPage({ nextStep }) {
     nextStep();
   };
   return (
-    <div className="flex flex-col my-8 mx-16">
+    <div className="flex flex-col my-8 mx-8">
       <h4 className="font-bold">My Cart</h4>
-      <span className="flex justify-center items-center gap-16">
+      <span className="flex flex-col lg:flex-row xl:flex-row justify-center items-center gap-16">
         <MyCart />
         <span className="flex flex-col gap-8">
           <MyOrder />

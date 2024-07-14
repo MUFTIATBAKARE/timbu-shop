@@ -5,7 +5,7 @@ function ProgressBar({ currentPage, activeStep }) {
   const progressBarValue = (currentPage / totalSteps) * 100;
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="hidden lg:flex lg:flex-col lg:items-center xl:flex xl:flex-col xl:items-center">
       <span className="flex gap-96 mx-auto">
         <p>Cart</p>
         <p>Checkout</p>
