@@ -47,10 +47,11 @@ const items = [
   },
 ];
 function PopularImages() {
+  
   return (
     <div className=" mx-10">
-      <h4 className="font-semibold mb-6">Popular Brands</h4>
-      <div className="flex justify-between ">
+      <h4 className="font-semibold mb-6 text-2xl">Popular Brands</h4>
+      <div className="flex justify-between overflow-hidden gap-12">
         {items.map((item) => {
           if (item) {
             return <img key={item.id} src={item.picture} />;

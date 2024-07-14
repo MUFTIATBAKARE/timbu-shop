@@ -2,7 +2,7 @@ import Search from "../assets/Search.svg";
 
 function searchBox() {
   return (
-    <div className="flex justify-between relative pointer-events-none">
+    <div className="hidden lg:hidden xl:flex justify-between relative pointer-events-none">
       <input
         type="text"
         placeholder="Search item"

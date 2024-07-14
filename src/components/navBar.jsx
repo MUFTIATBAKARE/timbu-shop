@@ -1,6 +1,6 @@
 function navBar() {
   return (
-    <div className="flex items-center gap-6 font-semibold">
+    <div className="hidden lg:flex items-center gap-6 font-semibold">
       <p>Home</p>
       <p>Categories</p>
       <p>New Arrivals</p>

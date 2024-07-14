@@ -13,15 +13,15 @@ function Deals() {
   }
   return (
     <div className=" mx-10">
-      <h4 className="font-semibold my-6">Best Deals Today</h4>
+      <h4 className="font-semibold lg:my-6 text-2xl">Best Deals Today</h4>
       <div className="flex relative items-center">
-        <ul id="rightSlider" className="flex mr-24 overflow-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-12"  >
+        <ul id="rightSlider" className="flex lg:mr-24 overflow-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-12"  >
           {Products.map((item) => (
             <Product item key={item.id} itemObj={item} />
           ))}
           <img src={Like} />
         </ul>
-        <img src={Slide} onClick={rightSlide} className="absolute right-0 mr-8 cursor-pointer" />
+        <img src={Slide} onClick={rightSlide} className="hidden lg:block absolute right-0 mr-8 cursor-pointer" />
       </div>
     </div>
   );
@@ -32,13 +32,13 @@ function Product(props) {
 
   return (
     <>
-      <li className="inline-block p-2 cursor-pointer">
+      <li className="inline-block p-2 cursor-pointer font-semibold text-base">
 
-        <img src={picture} />
-        <p>{name}</p>
-        <p>${price}</p>
+        <img src={picture} className="my-image"/>
+        <p className="text-custom-colorGrey font-semibold text-base">{name}</p>
+        <p className=" font-bold text-xl">${price}</p>
         <Link to="/product">
-          <button onClick={() => addProduct(id)}>Add to Cart</button>
+          <button className="bg-white text-custom-buttonGrey font-medium text-sm mx-auto py-3 px-8 border rounded" onClick={() => addProduct(id)}>Add to Cart</button>
         </Link>
       </li>
 

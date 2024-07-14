@@ -9,23 +9,23 @@ import Footer from "../components/Footer";
 
 const LandingPage = () => {
   return (
-    <div >
+    <div className="max-w-full h-screen flex flex-col gap-8" >
       <Desktop />
       <Legend />
       <PopularImages />
       <Deals />
       <TopProducts />
       <Discount />
-      <div className="flex justify-between align-center mx-48 my-10 text-3xl">
-        <span>
+      <div className="flex flex-col gap-16 mx-auto lg:flex-row  lg:justify-between align-center lg:gap-32 my-10 text-3xl">
+        <span className="hidden lg:block lg:text-center">
           <p> 15k+<br />
             Outlets Worldwide</p>
         </span>
         <span>
-          <p> 2M+ <br />
+          <p className="text-center"> 2M+ <br />
             Satisfied Customers</p>
         </span>
-        <span>
+        <span className="hidden lg:block lg:text-center">
           <p> 9M+<br />
             Footwears Sold </p>
         </span>

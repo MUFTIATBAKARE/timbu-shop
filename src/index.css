@@ -14,6 +14,14 @@ body {
 .styleBorder{
     border-top: 5px solid slate;
 }
+.my-image{
+  width: 97px;
+  height: 104px;
+}
+.footerLogo{
+  width: 85px;
+  height: 51px;
+}
 .progress_bar {
   align-self: center;
   margin-top: 16px;
