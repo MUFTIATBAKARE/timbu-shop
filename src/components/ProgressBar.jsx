@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-function ProgressBar({ currentPage, activeStep }) {
+function ProgressBar({ currentPage }) {
   const steps = [
     { label: "Cart", number: 1 },
     { label: "Shipping", number: 2 },
@@ -55,7 +55,6 @@ function ProgressBar({ currentPage, activeStep }) {
 
 ProgressBar.propTypes = {
   currentPage: PropTypes.number.isRequired,
-  activeStep: PropTypes.number.isRequired,
 };
 
 export default ProgressBar;

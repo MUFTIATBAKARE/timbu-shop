@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import PropTypes from "prop-types";
 import { Items } from "../Items";
 import { Products } from "../Products";
 
@@ -144,4 +145,8 @@ export const ShopContextProvider = (props) => {
       {props.children}
     </ShopContext.Provider>
   );
+};
+
+ShopContextProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };

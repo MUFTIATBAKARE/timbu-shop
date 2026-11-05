@@ -119,7 +119,9 @@ function ProductPage() {
         {/* Shoes Grid */}
         {filteredShoes.length === 0 ? (
           <div className="text-center py-16 bg-white rounded-3xl border border-gray-200">
-            <p className="text-gray-400 text-lg">No footwear found matching "{searchQuery}".</p>
+            <p className="text-gray-400 text-lg">
+              No footwear found matching &quot;{searchQuery}&quot;.
+            </p>
             <button
               type="button"
               onClick={() => {

@@ -31,7 +31,7 @@ function MyCart() {
         </div>
         <h3 className="text-xl font-bold text-gray-800">Your shopping cart is empty</h3>
         <p className="text-gray-500 text-sm max-w-sm">
-          Looks like you haven't added any footwear to your cart yet. Explore our top drops!
+          Looks like you haven&apos;t added any footwear to your cart yet. Explore our top drops!
         </p>
         <Link
           to="/"

@@ -7,13 +7,11 @@ import ProgressBar from "../components/ProgressBar";
 
 function Steps() {
   const [page, setPage] = useState(0);
-  const [currentStep, setCurrentStep] = useState(1);
   const totalPages = 3;
 
   const nextStep = () => {
     if (page < totalPages - 1) {
       setPage((prev) => prev + 1);
-      setCurrentStep((prev) => prev + 1);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
@@ -21,7 +19,6 @@ function Steps() {
   const prevStep = () => {
     if (page > 0) {
       setPage((prev) => prev - 1);
-      setCurrentStep((prev) => prev - 1);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
@@ -43,7 +40,7 @@ function Steps() {
     <div className="min-h-screen bg-gray-50 flex flex-col">
       <Desktop />
       <div className="flex-1 w-full max-w-7xl mx-auto px-2 sm:px-4 py-4">
-        <ProgressBar currentPage={page} activeStep={currentStep} />
+        <ProgressBar currentPage={page} />
         {ShowNextPage()}
       </div>
     </div>
