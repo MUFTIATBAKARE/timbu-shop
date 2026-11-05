@@ -9,28 +9,33 @@ import Footer from "../components/Footer";
 
 const LandingPage = () => {
   return (
-    <div className="max-w-full h-screen flex flex-col gap-8" >
+    <div className="min-h-screen bg-white flex flex-col w-full overflow-x-hidden">
       <Desktop />
-      <Legend />
-      <PopularImages />
-      <Deals />
-      <TopProducts />
-      <Discount />
-      <div className="flex flex-col gap-16 mx-auto lg:flex-row  lg:justify-between align-center lg:gap-32 my-10 text-3xl">
-        <span className="hidden lg:block lg:text-center">
-          <p> 15k+<br />
-            Outlets Worldwide</p>
-        </span>
-        <span>
-          <p className="text-center"> 2M+ <br />
-            Satisfied Customers</p>
-        </span>
-        <span className="hidden lg:block lg:text-center">
-          <p> 9M+<br />
-            Footwears Sold </p>
-        </span>
-      </div>
-      <HomeText />
+      <main className="flex-1 flex flex-col gap-8">
+        <Legend />
+        <PopularImages />
+        <Deals />
+        <TopProducts />
+        <Discount />
+
+        {/* Global Statistics Banner */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto px-6 my-6 text-center">
+          <div className="p-4 bg-gray-50 rounded-2xl border border-gray-100">
+            <p className="text-3xl sm:text-4xl font-extrabold text-custom-green">15k+</p>
+            <p className="text-sm font-semibold text-gray-600 mt-1">Outlets Worldwide</p>
+          </div>
+          <div className="p-4 bg-gray-50 rounded-2xl border border-gray-100">
+            <p className="text-3xl sm:text-4xl font-extrabold text-custom-green">2M+</p>
+            <p className="text-sm font-semibold text-gray-600 mt-1">Satisfied Customers</p>
+          </div>
+          <div className="p-4 bg-gray-50 rounded-2xl border border-gray-100">
+            <p className="text-3xl sm:text-4xl font-extrabold text-custom-green">9M+</p>
+            <p className="text-sm font-semibold text-gray-600 mt-1">Footwear Sold</p>
+          </div>
+        </div>
+
+        <HomeText />
+      </main>
       <Footer />
     </div>
   );

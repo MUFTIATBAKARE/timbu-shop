@@ -1,15 +1,33 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-function Button({ body, onClick}) {
+function Button({ body, onClick, to = "/product" }) {
+  if (to) {
+    return (
+      <Link
+        to={to}
+        className="inline-block bg-custom-midGreen hover:bg-custom-green text-white font-semibold text-lg py-3 px-8 rounded-xl shadow-md transition-all text-center w-full sm:w-auto"
+      >
+        {body}
+      </Link>
+    );
+  }
+
   return (
-    <>
-      <button className="bg-custom-midGreen text-white font-medium text-2xl mx-auto py-3 w-3/4 md:w-1/2 md:mx-0 lg:mx-0 lg:w-2/4 xl:w-1/4 px-8 border rounded" onClick={onClick}>{body}</button>
-    </>
+    <button
+      type="button"
+      className="bg-custom-midGreen hover:bg-custom-green text-white font-semibold text-lg py-3 px-8 rounded-xl shadow-md transition-all text-center w-full sm:w-auto cursor-pointer"
+      onClick={onClick}
+    >
+      {body}
+    </button>
   );
 }
 
-Button.propTypes = { body: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
- };
+Button.propTypes = {
+  body: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  to: PropTypes.string,
+};
 
 export default Button;

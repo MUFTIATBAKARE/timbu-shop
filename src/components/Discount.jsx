@@ -1,28 +1,39 @@
-
+import { Link } from "react-router-dom";
 import DiscountA from "../assets/DiscountA.svg";
 import DiscountB from "../assets/DiscountB.svg";
 
 function Discount() {
   return (
-    <div className="bg-custom-lightestGreen relative">
-      <div className="flex  flex-col-reverse lg:flex-row items-center mx-auto h-44 lg:justify-center lg:w-9/12 bg-custom-green mx-12 my-8 xl:h-128 lg:h-128  lg:my-8">
+    <div className="bg-custom-lightestGreen py-8 sm:py-12 my-6">
+      <div className="relative flex flex-col lg:flex-row items-center justify-center bg-custom-green mx-4 sm:mx-8 md:mx-auto max-w-5xl rounded-3xl p-8 sm:p-12 overflow-hidden shadow-lg">
         <img
           src={DiscountA}
-          alt="picture"
-          className=" hidden lg:block lg:start-2 lg:absolute"
+          alt="Discount left"
+          className="hidden lg:block absolute left-4 bottom-4 w-48 opacity-80"
         />
-        <span className="flex flex-col items-center justify-center gap-8 h-60 lg:w-1/2 lg:h-80 text-3xl">
-          <h3 className="text-base lg:text-2xl text-white text-center font-bold">
-            Get up to 15% off on all items above $300
+
+        <div className="flex flex-col items-center justify-center text-center gap-4 z-10 max-w-md">
+          <span className="text-xs font-bold tracking-widest uppercase text-green-300">
+            Special Promotion
+          </span>
+          <h3 className="text-xl sm:text-3xl text-white font-extrabold leading-tight">
+            Get up to 15% off on all footwear orders above $300
           </h3>
-          <button className="bg-custom-green text-white font-light lg:font-medium text-xs lg:text-2xl mx-auto py-3 w-fit lg:w-2/4 px-8 border border-white rounded">
-            Learn More
-          </button>
-        </span>
+          <p className="text-xs sm:text-sm text-green-100">
+            Use code <span className="font-mono font-bold text-white">TIMBU15</span> at checkout
+          </p>
+          <Link
+            to="/product"
+            className="mt-2 inline-block bg-white text-custom-green font-bold text-sm sm:text-base py-3 px-8 rounded-full shadow-md hover:bg-gray-100 transition-all"
+          >
+            Shop Now
+          </Link>
+        </div>
+
         <img
           src={DiscountB}
-          alt="picture"
-          className=" hidden lg:block lg:end-2 lg:top-0 lg:absolute"
+          alt="Discount right"
+          className="hidden lg:block absolute right-4 top-4 w-48 opacity-80"
         />
       </div>
     </div>

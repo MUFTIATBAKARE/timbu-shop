@@ -1,18 +1,43 @@
 import { useContext } from "react";
-import {ShopContext} from "../context/ShopContext"
+import PropTypes from "prop-types";
+import { ShopContext } from "../context/ShopContext";
 
-function OrderCount({id, itemType}) {
-  const {cartItems, cartProducts, addProduct, removeProduct, addToCart, removeFromCart} = useContext(ShopContext)
-  const quantity = itemType === "item" ? cartItems[id] : cartProducts[id];
+function OrderCount({ id, itemType }) {
+  const { cartItems, cartProducts, addProduct, removeProduct, addToCart, removeFromCart } =
+    useContext(ShopContext);
+
+  const quantity = itemType === "item" ? (cartItems[id] || 0) : (cartProducts[id] || 0);
   const add = itemType === "item" ? addToCart : addProduct;
   const remove = itemType === "item" ? removeFromCart : removeProduct;
+
   return (
-    <div className="hidden lg:flex items-center justify-center h-6 w-14 px-8 bg-white hover:bg-gray-300 text-gray-800 font-bold  rounded border border-gray-400">
-      <button className="text-lg outline-none focus:outline-none" onClick={() => remove(id)}>-</button>
-      <input className="w-8 styleBorder" value={quantity}/>
-      <button className="outline-none focus:outline-none" onClick={() => add(id)}>+</button>
+    <div className="flex items-center justify-between h-8 w-24 px-2 bg-gray-50 border border-gray-300 rounded-lg select-none">
+      <button
+        type="button"
+        className="w-6 h-6 flex items-center justify-center text-gray-600 hover:text-black font-bold text-base hover:bg-gray-200 rounded transition-colors"
+        onClick={() => remove(id)}
+        aria-label="Decrease quantity"
+      >
+        -
+      </button>
+      <span className="text-sm font-semibold text-gray-800 text-center w-6">
+        {quantity}
+      </span>
+      <button
+        type="button"
+        className="w-6 h-6 flex items-center justify-center text-gray-600 hover:text-black font-bold text-base hover:bg-gray-200 rounded transition-colors"
+        onClick={() => add(id)}
+        aria-label="Increase quantity"
+      >
+        +
+      </button>
     </div>
   );
 }
+
+OrderCount.propTypes = {
+  id: PropTypes.number.isRequired,
+  itemType: PropTypes.oneOf(["item", "product"]).isRequired,
+};
 
 export default OrderCount;

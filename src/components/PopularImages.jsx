@@ -9,54 +9,32 @@ import Vans from "../assets/vans.svg";
 import Asks from "../assets/asks.svg";
 
 const items = [
-  {
-    id: 21,
-    picture: Adidas,
-  },
-  {
-    id: 22,
-    picture: Nike,
-  },
-  {
-    id: 23,
-    picture: Puma,
-  },
-  {
-    id: 24,
-    picture: Fila,
-  },
-  {
-    id: 25,
-    picture: Balance,
-  },
-  {
-    id: 26,
-    picture: Reebok,
-  },
-  {
-    id: 27,
-    picture: Converse,
-  },
-  {
-    id: 28,
-    picture: Vans,
-  },
-  {
-    id: 29,
-    picture: Asks,
-  },
+  { id: 21, picture: Adidas, name: "Adidas" },
+  { id: 22, picture: Nike, name: "Nike" },
+  { id: 23, picture: Puma, name: "Puma" },
+  { id: 24, picture: Fila, name: "Fila" },
+  { id: 25, picture: Balance, name: "New Balance" },
+  { id: 26, picture: Reebok, name: "Reebok" },
+  { id: 27, picture: Converse, name: "Converse" },
+  { id: 28, picture: Vans, name: "Vans" },
+  { id: 29, picture: Asks, name: "Asics" },
 ];
+
 function PopularImages() {
-  
   return (
-    <div className=" mx-10">
-      <h4 className="font-semibold mb-6 text-2xl">Popular Brands</h4>
-      <div className="flex justify-between overflow-hidden gap-12">
-        {items.map((item) => {
-          if (item) {
-            return <img key={item.id} src={item.picture} />;
-          }
-        })}
+    <div className="mx-4 sm:mx-8 md:mx-10 my-4">
+      <h4 className="font-bold text-gray-900 mb-4 text-xl sm:text-2xl">
+        Popular Brands
+      </h4>
+      <div className="flex items-center overflow-x-auto scrollbar-hide gap-8 sm:gap-12 py-3 px-1">
+        {items.map((item) => (
+          <img
+            key={item.id}
+            src={item.picture}
+            alt={item.name}
+            className="h-8 sm:h-10 object-contain grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100 flex-none"
+          />
+        ))}
       </div>
     </div>
   );

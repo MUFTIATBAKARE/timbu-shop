@@ -1,55 +1,101 @@
+import { useState, useContext } from "react";
 import PropTypes from "prop-types";
-import Like from "../assets/Heart.svg";
+import { Items } from "../Items";
 import Slide from "../assets/ArrowSlide.svg";
-import { Items } from "../Items"
-import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { ShopContext } from "../context/ShopContext"
-
+import { ShopContext } from "../context/ShopContext";
 
 function TopProducts() {
   const rightSlide = () => {
-    var rightSlider = document.getElementById('nextSlider');
-    rightSlider.scrollLeft = rightSlider.scrollLeft + 500;
-  }
+    const slider = document.getElementById("nextSlider");
+    if (slider) {
+      slider.scrollLeft += 400;
+    }
+  };
+
   return (
-    <div className=" mx-10">
-      <h4 className="font-semibold lg:my-6 text-2xl">Top Products</h4>
+    <div className="mx-4 sm:mx-8 md:mx-10 my-6">
+      <div className="flex items-center justify-between mb-4">
+        <h4 className="font-extrabold text-gray-900 text-xl sm:text-2xl">
+          Top Products & New Drops
+        </h4>
+        <span className="text-xs font-semibold text-custom-midGreen">
+          Scroll to explore →
+        </span>
+      </div>
+
       <div className="flex relative items-center">
-        <ul id="nextSlider" className="flex lg:mr-24 overflow-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-12">
+        <ul
+          id="nextSlider"
+          className="flex overflow-x-auto scroll-smooth scrollbar-hide gap-6 pb-4 w-full"
+        >
           {Items.map((item) => (
-            <Product item key={item.id} itemObj={item} />
+            <ProductCard key={item.id} itemObj={item} />
           ))}
-          <img src={Like} />
         </ul>
-        <img src={Slide} onClick={rightSlide} className="hidden lg:block absolute right-0 mr-8 cursor-pointer" />
+        <button
+          type="button"
+          onClick={rightSlide}
+          className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 bg-white/90 shadow-md p-2 rounded-full hover:bg-white transition-all cursor-pointer z-10"
+          aria-label="Scroll right"
+        >
+          <img src={Slide} alt="Slide right" className="w-5 h-5" />
+        </button>
       </div>
     </div>
   );
 }
-function Product(props) {
-  const { id, picture, name, price } = props.itemObj
-  const { addToCart, cartItems } = useContext(ShopContext)
+
+function ProductCard({ itemObj }) {
+  const { id, picture, name, price } = itemObj;
+  const { addToCart } = useContext(ShopContext);
+  const [added, setAdded] = useState(false);
+
+  const handleAdd = () => {
+    addToCart(id);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1200);
+  };
+
   return (
-    <>
-      <li className="inline-block p-2 cursor-pointer font-semibold text-base ">
-        <img src={picture} className="my-image"/>
-        <p className="text-custom-colorGrey font-semibold text-base">{name}</p>
-        <p className=" font-bold text-xl">${price}</p>
-        <Link to="/product">
-          <button className="bg-white text-custom-buttonGrey font-medium text-sm mx-auto py-3 px-8 border rounded" onClick={() => addToCart(id)}>Add to Cart</button>
-        </Link>
-      </li>
-    </>
+    <li className="flex-none w-56 sm:w-64 p-4 bg-white rounded-2xl border border-gray-200 hover:border-gray-300 shadow-xs flex flex-col justify-between transition-all">
+      <div className="flex flex-col items-center">
+        <img
+          src={picture}
+          alt={name}
+          className="w-full h-40 object-contain p-2 rounded-xl bg-gray-50 mb-3"
+        />
+        <p className="text-gray-800 font-bold text-sm text-center line-clamp-2 min-h-10">
+          {name}
+        </p>
+      </div>
+
+      <div className="mt-3 flex flex-col gap-3">
+        <p className="font-extrabold text-lg text-gray-900 text-center">
+          ${price.toFixed(2)}
+        </p>
+        <button
+          type="button"
+          onClick={handleAdd}
+          className={`w-full py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+            added
+              ? "bg-custom-green text-white shadow-sm"
+              : "bg-custom-midGreen hover:bg-custom-green text-white shadow-xs"
+          }`}
+        >
+          {added ? "✓ Added to Cart" : "Add to Cart"}
+        </button>
+      </div>
+    </li>
   );
 }
 
-Product.propTypes = {
+ProductCard.propTypes = {
   itemObj: PropTypes.shape({
-    picture: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
-      .isRequired,
+    id: PropTypes.number.isRequired,
+    picture: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
   }).isRequired,
 };
+
 export default TopProducts;
