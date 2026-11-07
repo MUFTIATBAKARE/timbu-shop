@@ -39,7 +39,21 @@ const regions = {
 };
 
 function CheckPage({ nextStep, prevStep }) {
-  const { setShippingData, shippingData } = useContext(ShopContext);
+  const { setShippingData, shippingData, country } = useContext(ShopContext);
+
+  const countryMap = {
+    "United States": "usa",
+    "Canada": "canada",
+    "United Kingdom": "uk",
+    "Nigeria": "nigeria",
+  };
+  const defaultCountryCode = countryMap[country] || "usa";
+  const defaultRegionCode = {
+    usa: "ny",
+    canada: "on",
+    uk: "lon",
+    nigeria: "lag",
+  }[defaultCountryCode] || "ny";
 
   const validationSchema = Yup.object().shape({
     fullName: Yup.string().required("Full name is required"),
@@ -61,12 +75,12 @@ function CheckPage({ nextStep, prevStep }) {
   } = useForm({
     resolver: yupResolver(validationSchema),
     defaultValues: shippingData || {
-      country: "usa",
-      region: "ny",
+      country: defaultCountryCode,
+      region: defaultRegionCode,
     },
   });
 
-  const selectedCountry = watch("country", "usa");
+  const selectedCountry = watch("country", defaultCountryCode);
   const availableRegions = regions[selectedCountry] || regions["usa"];
 
   const onSubmit = (data) => {

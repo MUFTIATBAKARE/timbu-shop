@@ -6,6 +6,8 @@ import Hamburger from "../assets/Menu.svg";
 import Logo from "./Logo";
 import Nav from "./navBar";
 import Search from "./searchBox";
+import TopNav from "./TopNav";
+import HeaderDrop from "./HeaderDrop";
 import { ShopContext } from "../context/ShopContext";
 
 function DesktopHeader2() {
@@ -15,11 +17,7 @@ function DesktopHeader2() {
 
   return (
     <>
-      <div className="hidden lg:flex items-center justify-end gap-4 px-10 py-1 bg-custom-green text-xs text-white">
-        <span>Language: English</span>
-        <span>•</span>
-        <span>Region: United States</span>
-      </div>
+      <TopNav />
       <header className="flex justify-between items-center my-4 md:my-6 mx-4 sm:mx-8 md:mx-10 relative">
         <Link to="/">
           <Logo />
@@ -69,13 +67,18 @@ function DesktopHeader2() {
             <Link
               to="/cart"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-base font-bold text-gray-800 hover:text-custom-green py-2 flex items-center justify-between"
+              className="text-base font-bold text-gray-800 hover:text-custom-green py-2 flex items-center justify-between border-b border-gray-100"
             >
               <span>Shopping Cart</span>
               <span className="bg-custom-midGreen text-white text-xs px-2.5 py-0.5 rounded-full font-bold">
                 {cartCount}
               </span>
             </Link>
+
+            {/* Mobile Language and Region selector */}
+            <div className="pt-1">
+              <HeaderDrop isMobile={true} />
+            </div>
           </div>
         )}
       </header>

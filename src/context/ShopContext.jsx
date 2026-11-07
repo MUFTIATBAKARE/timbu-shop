@@ -28,6 +28,40 @@ export const ShopContextProvider = (props) => {
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [shippingData, setShippingData] = useState(null);
 
+  const [language, setLanguageState] = useState(() => {
+    try {
+      return localStorage.getItem("timbu_language") || "English";
+    } catch {
+      return "English";
+    }
+  });
+
+  const [country, setCountryState] = useState(() => {
+    try {
+      return localStorage.getItem("timbu_country") || "United States";
+    } catch {
+      return "United States";
+    }
+  });
+
+  const setLanguage = (lang) => {
+    setLanguageState(lang);
+    try {
+      localStorage.setItem("timbu_language", lang);
+    } catch {
+      // ignore storage error
+    }
+  };
+
+  const setCountry = (ctry) => {
+    setCountryState(ctry);
+    try {
+      localStorage.setItem("timbu_country", ctry);
+    } catch {
+      // ignore storage error
+    }
+  };
+
   const getSubtotalAmount = () => {
     let subtotalA = 0;
     selectedItems.forEach((itemId) => {
@@ -127,6 +161,10 @@ export const ShopContextProvider = (props) => {
     selectedProducts,
     shippingData,
     setShippingData,
+    language,
+    setLanguage,
+    country,
+    setCountry,
     addToCart,
     removeFromCart,
     deleteFromCart,
