@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Desktop from "../components/desktopHeader1";
+import Footer from "../components/Footer";
 import CartPage from "./cartPage";
 import CheckPage from "./CheckPage";
 import Payment from "./Payment";
@@ -43,6 +44,7 @@ function Steps() {
         <ProgressBar currentPage={page} />
         {ShowNextPage()}
       </div>
+      <Footer />
     </div>
   );
 }

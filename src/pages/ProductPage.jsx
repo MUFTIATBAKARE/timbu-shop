@@ -1,15 +1,25 @@
-import { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import Desktop from "../components/desktopHeader2";
+import Footer from "../components/Footer";
 import Back from "../assets/Arrow.svg";
 import { Items } from "../Items";
 import { Products } from "../Products";
 import { ShopContext } from "../context/ShopContext";
 
 function ProductPage() {
+  const [searchParams] = useSearchParams();
+  const urlSearch = searchParams.get("search") || "";
+
   const [filter, setFilter] = useState("all");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(urlSearch);
+
+  useEffect(() => {
+    if (urlSearch) {
+      setSearchQuery(urlSearch);
+    }
+  }, [urlSearch]);
 
   const allFootwear = [
     ...Items.map((item) => ({ ...item, source: "item" })),
@@ -53,7 +63,7 @@ function ProductPage() {
               placeholder="Filter by shoe name..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-4 py-2 text-sm bg-white border border-gray-300 rounded-xl focus:border-custom-midGreen focus:ring-1 focus:ring-custom-midGreen outline-none"
+              className="w-full px-4 py-2 text-sm bg-white border border-gray-300 rounded-xl focus:border-custom-midGreen focus:ring-1 focus:ring-custom-midGreen outline-none shadow-xs"
             />
           </div>
         </div>
@@ -128,7 +138,7 @@ function ProductPage() {
                 setSearchQuery("");
                 setFilter("all");
               }}
-              className="mt-3 text-sm font-bold text-custom-midGreen hover:underline"
+              className="mt-3 text-sm font-bold text-custom-midGreen hover:underline cursor-pointer"
             >
               Reset filters
             </button>
@@ -141,6 +151,8 @@ function ProductPage() {
           </div>
         )}
       </main>
+
+      <Footer />
     </div>
   );
 }
@@ -190,7 +202,7 @@ function ShoeCard({ shoe }) {
                 key={sz}
                 type="button"
                 onClick={() => setSelectedSize(sz)}
-                className={`w-6 h-6 rounded flex items-center justify-center text-[10px] font-bold border ${
+                className={`w-6 h-6 rounded flex items-center justify-center text-[10px] font-bold border transition-colors cursor-pointer ${
                   selectedSize === sz
                     ? "border-custom-midGreen bg-green-50 text-custom-green"
                     : "border-gray-200 text-gray-600 hover:border-gray-300"
